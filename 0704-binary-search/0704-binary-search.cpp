@@ -9,7 +9,7 @@ public:
             else if (nums[mid] > target) right = mid - 1;
             else left = mid + 1;
         }
-        return -1; // can return anything
+        return -1; // -1 if not found
     }
 };
 
