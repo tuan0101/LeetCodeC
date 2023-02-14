@@ -14,10 +14,11 @@ public:
     bool isBalanced(TreeNode* root) {
         if (root==NULL) return true;
         
-        return (GetHeight(root) != -1); //O(N)
-
+        //return (GetHeight(root) != -1); //O(N)
+        int left = GetHeight(root->left);
+        int right =  GetHeight(root->right);
         // this cost O(N^2) bc isBalanced() is called on every node
-        //return (abs(left-right) <= 1 && isBalanced(root->left) && isBalanced(root->right));
+        return (abs(left-right) <= 1 && isBalanced(root->left) && isBalanced(root->right));
     }
     
     int GetHeight(TreeNode* root){
@@ -25,8 +26,8 @@ public:
         
         int left = GetHeight(root->left);
         int right =  GetHeight(root->right);
-        if(abs(left-right)>1 || left==-1 || right==-1)
-            return -1;
+        // if(abs(left-right)>1 || left==-1 || right==-1)
+        //     return -1;
         
         return max(left, right) + 1;
     }
