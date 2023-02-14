@@ -11,13 +11,6 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        // we can ignore these first conditions because
-        // these the only exist conditions if they are not on the same side;
-        // if(p->val == root->val || q->val == root->val) return root;
-        // // different side
-        // if(p->val > root->val && q->val < root->val ||
-        //   p->val < root->val && q->val > root->val)        
-        //     return root;
         
         // same side
         // both right        
@@ -29,7 +22,7 @@ public:
             return lowestCommonAncestor(root->left, p, q);
         }
         
-        // now either they are on the same side
+        // now either they are on the different sides
         // or one is a parent of another => return root;
         return root;
     }
