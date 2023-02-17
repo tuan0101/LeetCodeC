@@ -4,7 +4,7 @@ public:
         if(ransomNote.length() > magazine.length())
             return false;
         
-        int myArray[26] = {0};
+        int myArray[26] = {0}; // much faster than unordered_map
         
         for(char &c : magazine){
             myArray[c-'a']++; 
