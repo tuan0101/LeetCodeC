@@ -4,15 +4,15 @@ public:
         if(ransomNote.length() > magazine.length())
             return false;
         
-        unordered_map<char, int> myMap;
+        int myArray[26] = {0};
         
         for(char &c : magazine){
-            myMap[c]++; 
+            myArray[c-'a']++; 
         }
         
         for(char &c : ransomNote){
-            if(myMap[c]==0) return false;
-            myMap[c]--;           
+            if(myArray[c-'a']==0) return false;
+            myArray[c-'a']--;           
         }
         
         return true;
