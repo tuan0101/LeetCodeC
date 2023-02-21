@@ -1,20 +1,29 @@
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
-        int minCost=0, oneCost=0, twoCost=0;
-        int len = cost.size();
+        // 14 ms, 13.6mb
+//         int minCost=0, oneCost=0, twoCost=0;
+//         int len = cost.size();
         
-        for(int i=2; i<=len; i++){
-            int jumpOneStep = oneCost + cost[i-1];
-            int jumpTwoStep = twoCost + cost[i-2];
-            minCost = min(jumpOneStep, jumpTwoStep);
+//         for(int i=2; i<=len; i++){
+//             int jumpOneStep = oneCost + cost[i-1];
+//             int jumpTwoStep = twoCost + cost[i-2];
+//             minCost = min(jumpOneStep, jumpTwoStep);
             
-            // move one step forward
-            twoCost = oneCost;
-            oneCost = minCost;
+//             // move one step forward
+//             twoCost = oneCost;
+//             oneCost = minCost;
+//         }
+        
+//         return minCost;
+        
+        cost.push_back(0);
+        int len = cost.size();
+        for(int i=len-3; i>=0; i--){
+            cost[i] += min(cost[i+1], cost[i+2]);
         }
         
-        return minCost;
+        return min(cost[0], cost[1]);
     }
 };
 
