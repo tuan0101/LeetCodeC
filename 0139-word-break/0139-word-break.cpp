@@ -1,6 +1,7 @@
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
+        // 7ms 10.9mb
 //         unordered_set<string> set (wordDict.begin(), wordDict.end());
 //         int len = s.length();
 //         vector<bool> dp (len+1, false);
@@ -19,15 +20,36 @@ public:
 //         }
 //         return dp[len];
         
-                vector<bool> ans(s.size()+1,0);
-        ans[0]=1;
-        for(int i=1;i<ans.size();i++)
-            for(string &w:wordDict)
-                if(i>=w.size() && ans[i-w.size()] && s.substr(i-w.size(),w.size())==w)
+        // 100% 0ms | 91% 7.7mb
+        int len = s.size();
+        vector<bool> dp(len+1,0);
+
+        dp[0] = true;
+        for(int i=1; i<=len ;i++)
+            for(string &w : wordDict){
+                int wordSize = w.size();
+                if(i>=wordSize && dp[i-wordSize] 
+                   && s.substr(i-wordSize, wordSize)==w)
                 {
-                    ans[i]=1;
+                    dp[i] = true;
                     break;
                 }
-        return ans.back();
+            }
+
+        return dp[len];
+        
+        // vector<bool> ans(s.size()+1,0);
+        // ans[0]=1;
+        // for(int i=1;i<ans.size();i++)
+        //     for(string &w:wordDict)
+        //         if(i>=w.size() && ans[i-w.size()] 
+        //            && s.substr(i-w.size(),w.size())==w)
+        //         {
+        //             ans[i]=1;
+        //             break;
+        //         }
+        // return ans.back();
+        
+        // ref: https://leetcode.com/problems/word-break/discuss/3179584/C%2B%2B-Easy-Solution-Using-DP
     }
 };
