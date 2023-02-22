@@ -24,14 +24,14 @@ public:
         int len = s.size();
         vector<bool> dp(len+1,0);
 
-        dp[0] = 1;
+        dp[0] = true;
         for(int i=1; i<=len ;i++)
             for(string &w : wordDict){
                 int wordSize = w.size();
                 if(i>=wordSize && dp[i-wordSize] 
                    && s.substr(i-wordSize, wordSize)==w)
                 {
-                    dp[i] = 1;
+                    dp[i] = true;
                     break;
                 }
             }
