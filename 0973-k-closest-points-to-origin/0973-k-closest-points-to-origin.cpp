@@ -3,8 +3,8 @@ public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
         // quick select
         int l = 0, r = points.size() - 1;
-        k--;
-        while(true) {
+
+        while(l < r) {
             int p = Partition(points, l, r);
             if (p == k)
                 break;
@@ -14,7 +14,7 @@ public:
                 r = p - 1;
             }
         }
-        return vector<vector<int>>(points.begin(), points.begin() + k + 1);
+        return vector<vector<int>>(points.begin(), points.begin() + k);
     }
     
     int Partition(vector<vector<int>>& A, int left, int right){
@@ -27,9 +27,6 @@ public:
         return left;
     }
     
-    bool LessThan(vector<int>& p, vector<int>& q){
-        return p[0]*p[0]+p[1]*p[1] < q[0]*q[0]+q[1]*q[1];
-    }
     
     int Distance(vector<int>& point){
         return point[0]*point[0]+point[1]*point[1];
