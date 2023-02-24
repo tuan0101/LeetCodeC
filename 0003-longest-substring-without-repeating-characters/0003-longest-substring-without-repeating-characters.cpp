@@ -4,6 +4,8 @@ public:
         
         // vector 90% 63%
         //vector<int> cache(256, -1);
+        
+        // array 93%  97%
         //int cache[128];     // there is no default value
         int cache[128]={};  // initialize all to 0
         int len = s.length();        
@@ -20,8 +22,11 @@ public:
         
         // "abacbcda"
         //  01234567        -- index
-        //  00000000        -- cachce
-        //  start = , result = 
+        //  12345678        -- cachce
+        // when i=2, start = 1, result = 2
+        // when i=4, start = 2, result = 3
+        // when i=5, start = 4, result = 3
+        // when i=7, start = 4, result = 4
 
         // 50% 20%
 //         unordered_map<char, int> myMap;
