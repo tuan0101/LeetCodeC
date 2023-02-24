@@ -3,36 +3,25 @@ public:
     int lengthOfLongestSubstring(string s) {
         
         // vector 90% 63%
-//         vector<int> cache(256, -1);
-//         int len = s.length();        
-//         int result = 0, start = -1;               
+        //vector<int> cache(256, -1);
+        //int cache[128];     // there is no default value
+        int cache[128]={};  // initialize all to 0
+        int len = s.length();        
+        int result = 0, start = 0;           
        
-//         for(int i=0; i<len; i++){
-//             if(cache[s[i]] > start){
-//                 start = cache[s[i]];
-//             }
-//             cache[s[i]] = i;
-//             result = max(result, i-start);
-//         }
-//         return result;
-        
-        int store[128]={0}; //array to store the occurences of all the characters
-        int l=0;    
-        int r=0;   
-        int ans=0;  
-        
-        while(r<s.length())    
-        {
-            store[s[r]]++;               
-            while(store[s[r]]>1) {
-                store[s[l]]--;   
-                l++;         
-            }            
-            ans = max(ans,r-l+1);   
-            r++;        
+        for(int i=0; i<len; i++){
+            if(cache[s[i]] > start){
+                start = cache[s[i]];
+            }
+            cache[s[i]] = i+1;  
+            result = max(result, i+1 - start);  
         }
-        return ans;
-
+        return result;
+        
+        // "abacbcda"
+        //  01234567        -- index
+        //  00000000        -- cachce
+        //  start = , result = 
 
         // 50% 20%
 //         unordered_map<char, int> myMap;
