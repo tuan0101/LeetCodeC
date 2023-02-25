@@ -22,40 +22,40 @@ public:
 class Solution {
 public:
     Node* cloneGraph(Node* node) {
-        if (!node) return NULL;
-        queue<Node*> q;
-        q.push(node);
-                
-        unordered_map<Node*, Node*> copies;
-        copies[node] = new Node(node->val);
-        
-        Node* current;
-        
-        while(!q.empty()){
-            current = q.front();
-            q.pop();            
-            for(Node* neighbor : current->neighbors){               
-                if(copies.count(neighbor)==0){
-                    copies[neighbor] = new Node(neighbor->val);
-                    q.push(neighbor);                    
-                }
-                copies[current]->neighbors.push_back(copies[neighbor]);
-            }            
-        }
-        return copies[node];
-
-        //return dfs_clone(node);        
-    }
-//private:
-//     unordered_map<Node*, Node*> copies;
-//     Node* dfs_clone(Node* node){
+        // 67% 87%
 //         if (!node) return NULL;
-//         if (copies.count(node)==0){
-//             copies[node] = new Node(node->val);
-//             for(Node* neighbor : node->neighbors){
-//                 copies[node]->neighbors.push_back(dfs_clone(neighbor));
-//             }
+//         queue<Node*> q;
+//         q.push(node);
+                
+//         unordered_map<Node*, Node*> copies;
+//         copies[node] = new Node(node->val);
+        
+//         Node* current;
+        
+//         while(!q.empty()){
+//             current = q.front();
+//             q.pop();            
+//             for(Node* neighbor : current->neighbors){               
+//                 if(copies.count(neighbor)==0){
+//                     copies[neighbor] = new Node(neighbor->val);
+//                     q.push(neighbor);                    
+//                 }
+//                 copies[current]->neighbors.push_back(copies[neighbor]);
+//             }            
 //         }
-//         return copies[node];   
-//     }
+//         return copies[node];
+        if (!node) return NULL;
+        return dfs_clone(node);        
+    }
+private:
+    unordered_map<Node*, Node*> copies;
+    Node* dfs_clone(Node* node){       
+        if (copies.count(node)==0){
+            copies[node] = new Node(node->val);
+            for(Node* neighbor : node->neighbors){
+                copies[node]->neighbors.push_back(dfs_clone(neighbor));
+            }
+        }
+        return copies[node];   
+    }
 };
