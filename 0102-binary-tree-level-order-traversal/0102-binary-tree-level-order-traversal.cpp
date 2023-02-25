@@ -11,7 +11,9 @@
  */
 class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {        
+    vector<vector<int>> levelOrder(TreeNode* root) {  
+        // O(2^h) where h is the height
+        // or O(w) where w is the width 
         vector<vector<int>> result;
         if(root==NULL) return result;
         
