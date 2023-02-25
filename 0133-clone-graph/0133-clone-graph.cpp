@@ -22,7 +22,7 @@ public:
 class Solution {
 public:
     Node* cloneGraph(Node* node) {
-        // 67% 87%
+        // BFS 67% 87%
 //         if (!node) return NULL;
 //         queue<Node*> q;
 //         q.push(node);
@@ -44,6 +44,8 @@ public:
 //             }            
 //         }
 //         return copies[node];
+        
+        // DFS: 67% 53%
         if (!node) return NULL;
         return dfs_clone(node);        
     }
