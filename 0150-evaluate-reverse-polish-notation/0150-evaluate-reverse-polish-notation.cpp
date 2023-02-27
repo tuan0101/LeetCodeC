@@ -1,8 +1,8 @@
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
+        //90% 75%
         stack<int> q;
-        int result;
         
         for(string &s : tokens){
             if (s.size()>1 || isdigit(s[0])) // size > 1 check for negative number
@@ -22,3 +22,11 @@ public:
         return q.top();
     }
 };
+
+// can replace switch case here by advance map function
+// unordered_map<string, function<int (int, int) > > map = {
+//             { "+" , [] (int a, int b) { return a + b; } },
+//             { "-" , [] (int a, int b) { return a - b; } },
+//             { "*" , [] (int a, int b) { return a * b; } },
+//             { "/" , [] (int a, int b) { return a / b; } }
+//         };
