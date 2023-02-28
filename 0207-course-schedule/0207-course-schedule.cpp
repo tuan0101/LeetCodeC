@@ -4,7 +4,7 @@ public:
        
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         vector<bool> visited(numCourses);
-        vector<vector<int>> M(numCourses);
+        vector<int> M[numCourses]; //same vector<vector<int>> M(numCourses);
         
         for(vector<int> pre : prerequisites){
             M[pre[0]].push_back(pre[1]);
@@ -19,7 +19,7 @@ public:
     }
     
     // DFS for each pre in a course
-    bool canComplete(int course, vector<bool> visited, vector<vector<int>>& M){
+    bool canComplete(int course, vector<bool> visited, vector<int> M[]){
         if(visited[course]) return false;
         else visited[course] = true;  // from undefined to true
         
