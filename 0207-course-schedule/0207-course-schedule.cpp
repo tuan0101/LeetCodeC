@@ -19,7 +19,7 @@ public:
     }
     
     // DFS for each pre in a course
-    bool canComplete(int course, vector<bool> visited, vector<int> M[]){
+    bool canComplete(int course, vector<bool> visited, vector<int> *M){
         if(visited[course]) return false;
         else visited[course] = true;  // from undefined to true
         
