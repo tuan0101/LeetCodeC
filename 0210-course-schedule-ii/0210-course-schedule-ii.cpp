@@ -1,6 +1,8 @@
 class Solution {
 public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+        //BFS: O(N + Egde)  O(E) to form adjacency list and O(N + E) for standard BFS traversal.
+        // space: O(N + E), required for queue and storing prerequisites as adjacency list graph in G
         vector<vector<int>> G(numCourses);
         vector<int> inDegree(numCourses, 0);
         vector<int> topo;
@@ -33,3 +35,5 @@ public:
         return {};
     }
 };
+
+// demo pic in OneNote
