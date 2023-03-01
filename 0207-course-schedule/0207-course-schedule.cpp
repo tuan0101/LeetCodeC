@@ -44,29 +44,40 @@ public:
         //     for (int j: G[bfs[i]])
         //         if (--degree[j] == 0) bfs.push_back(j);
         // return bfs.size() == n;
+        
+        // indegree and queue: 65% 80%
         vector<vector<int>> G(numCourses);
         vector<int> inDegree(numCourses, 0);
         vector<int> topo;
-        queue<int> q;
+        //queue<int> q;
         
+        // build graph
         for(auto& pair : prerequisites){
             G[pair[0]].push_back(pair[1]);
             inDegree[pair[1]]++;
         }
         
         for(int i=0; i<numCourses; i++)
-            if(inDegree[i]==0) q.push(i);
+            if(inDegree[i]==0) topo.push_back(i);
         
-        while(!q.empty()){
-            int node = q.front(); q.pop();
+//         while(!q.empty()){
+//             int node = q.front(); q.pop();
             
-            for(int course : G[node]){
+//             for(int course : G[node]){
+//                 inDegree[course]--;
+//                 if(inDegree[course]==0)
+//                     q.push(course);
+//             }
+//             topo.push_back(node);
+//         }
+        for(int i=0; i<topo.size(); i++){
+            for(int course : G[topo[i]]){
                 inDegree[course]--;
                 if(inDegree[course]==0)
-                    q.push(course);
+                    topo.push_back(course);
             }
-            topo.push_back(node);
         }
+        
         return topo.size() == numCourses;
     }    
 };
