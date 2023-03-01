@@ -1,4 +1,6 @@
-struct TrieNode{  // has to be declaired before main class
+//struct: 82% 58%
+
+class TrieNode{  // has to be declaired before main class
 public:
     TrieNode* next[26]; //TrieNode* next[26] = {};
     bool _isWord;    
