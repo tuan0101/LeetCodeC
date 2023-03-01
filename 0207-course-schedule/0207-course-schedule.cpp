@@ -1,8 +1,9 @@
 class Solution {
 public:
-    // 20% 5%    
+      
        
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        // DFS 20% 5%  
 //         vector<bool> visited(numCourses);
 //         vector<int> M[numCourses]; //same vector<vector<int>> M(numCourses);
         
@@ -46,6 +47,7 @@ public:
         // return bfs.size() == n;
         
         // indegree and queue: 65% 80%
+        // replace queue by topo: 85% 82%
         vector<vector<int>> G(numCourses);
         vector<int> inDegree(numCourses, 0);
         vector<int> topo;
@@ -70,6 +72,8 @@ public:
 //             }
 //             topo.push_back(node);
 //         }
+        
+        //replace queue by topo
         for(int i=0; i<topo.size(); i++){
             for(int course : G[topo[i]]){
                 inDegree[course]--;
