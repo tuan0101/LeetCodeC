@@ -13,21 +13,13 @@ public:
             inDegree[pair[0]]++;
         }
         
+        // add 0 degree to Q
         for(int i=0; i<numCourses; i++)
             if(inDegree[i]==0) topo.push_back(i);
         
-//         while(!q.empty()){
-//             int node = q.front(); q.pop();
-            
-//             for(int course : G[node]){
-//                 inDegree[course]--;
-//                 if(inDegree[course]==0)
-//                     q.push(course);
-//             }
-//             topo.push_back(node);
-//         }
-        
-        //replace queue by topo
+        // for each current 0-degree node in TOPO
+        // then for each node that connected by the current TOPO node
+        // reduce its degree, then add to TOPO if reach 0-degree
         for(int i=0; i<topo.size(); i++){
             for(int course : G[topo[i]]){
                 inDegree[course]--;
