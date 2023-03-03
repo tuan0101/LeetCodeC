@@ -1,6 +1,8 @@
 class Solution {
 public:
     int coinChange(vector<int>& coins, int n) {
+        // 97% 98% with array
+        sort(begin(coins), end(coins));
         int INF = n+1;
         int dp[n+1];
         
@@ -11,6 +13,8 @@ public:
             for(int &coin : coins){
                 if(i >= coin)
                     dp[i] = min(dp[i], 1+dp[i-coin]);
+                else 
+                    break;
             }
         }
         return dp[n]==INF? -1 : dp[n];
