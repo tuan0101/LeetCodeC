@@ -3,6 +3,7 @@ public:
     int coinChange(vector<int>& coins, int n) {
         
         // 76% 62%
+        // 66% 62% with sort
         sort(coins.begin(), coins.end());
         int INF = n+1;
         vector<int> dp (n+1, INF);
