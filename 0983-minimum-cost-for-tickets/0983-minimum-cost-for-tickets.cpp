@@ -3,35 +3,21 @@ public:
 
     int mincostTickets(vector<int>& days, vector<int>& costs) {
         
-        // 70% 57%
+        // 100% 57%
         int n = days.size();
-        vector<int> dp(n+1, 0);
+        vector<int> dp(n+1);
         dp[n] = 0;
         
         for(int i = n-1; i>=0; i--){
-            dp[i] = min({costs[0] + dp[i+1],  costs[1] + dp[getTheNext8thDay(days, i, n)], 
-                         costs[2] + dp[getTheNext31stDay(days, i, n)]});
-            //dp[i] = min(dp[i], costs[2] + dp[getTheNext31stDay(days, i)] );
-            //min({a, b, c}); new syntax
-        }
-        
+            int theNext8thDay = i;
+            int theNext31stDay = i;
+            while(theNext8thDay<n && days[theNext8thDay] < days[i]+7) theNext8thDay++;
+            while(theNext31stDay<n && days[theNext31stDay] < days[i]+30) theNext31stDay++;
+            
+            dp[i] = min({costs[0] + dp[i+1],  costs[1] + dp[theNext8thDay], 
+                         costs[2] + dp[theNext31stDay]});
+        }        
         return dp[0];
-    }
-    
-    int getTheNext8thDay(vector<int>& days, int start, int n){
-        int nextDay = days[start] + 7;
-        while(start<n && days[start] < nextDay){
-            start++;
-        }
-        return start;
-    }
-    
-    int getTheNext31stDay(vector<int>& days, int start, int n){
-        int nextDay = days[start] + 30;
-        while(start<n && days[start] < nextDay){
-            start++;
-        }
-        return start;
     }
 };
 
