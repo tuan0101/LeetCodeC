@@ -1,6 +1,7 @@
 class MinStack {
 private:
-    // 2 stacks: 40% 75%
+    // 2 stacks: 40% 70%
+    // 1 stacks: 65% 70%
     stack<int> myStack;
     int min_value = INT_MAX;
 public:    
