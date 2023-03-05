@@ -1,21 +1,28 @@
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
+        // 85% 55%
         int prefix = 1, postfix = 1;
         int n = nums.size();
         vector<int> answer (n,1);
         
+        // [n-i-1] guarantee each position have prefix*postfix
         for(int i=0; i<n; i++){
             answer[i] *= prefix;
             prefix *= nums[i];
             answer[n-i-1] *= postfix;
             postfix *= nums[n-i-1];
         }
+
+        return answer;
+    }
         // i = 3    end = 0
         // prefix = 6
         // postfix = 24
         // [24, 12, 8, 6]
-        return answer;
+    
+    // easier to understand
+    // 60% 55%
 //         int prefix = 1;
 //         vector<int> answer;
         
@@ -31,7 +38,7 @@ public:
 //         }
 
 //         return answer;
-    }
+//    }
 };
 
 // prefix           [1, 1, 2, 6]
