@@ -1,5 +1,6 @@
 class MinStack {
 private:
+    // 2 stacks: 40% 63%
     stack<int> myStack;
     stack<int> minStack;
 public:    
