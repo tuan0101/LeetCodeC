@@ -1,8 +1,9 @@
 class Solution {
 private:
+    // minute =0; 42% 60%
     queue<pair<int, int>> q;
     int fresh = 0;
-    int minute = 0;
+    int minute = -1;
 public:
     int orangesRotting(vector<vector<int>>& grid) {   
 
@@ -32,10 +33,11 @@ public:
                 bfs(grid, r, c+1, count); // right
             }
             //std::cout<<"count: "<<count;
-            if(count>0)
-                minute++;                         
+            //if(count>0)
+            minute++;                         
         }
         if (fresh>0) return -1;
+        if (minute==-1) return 0;
         return minute;
         
     }
