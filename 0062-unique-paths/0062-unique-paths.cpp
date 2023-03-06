@@ -1,8 +1,10 @@
 class Solution {
 public:
-    int uniquePaths(int m, int n) {
+    int uniquePaths(int m, int n) {       
+        // 100% 90%
         int dp[m][n];
-        memset(dp, 0, sizeof dp);
+        // memset only works 0 and -1 bc it works BYTE by BYTE
+        memset(dp, 0, sizeof dp); // fill 1 here does not work
         dp[0][0] = 1;
         
         for(int i=0; i<m; i++){
