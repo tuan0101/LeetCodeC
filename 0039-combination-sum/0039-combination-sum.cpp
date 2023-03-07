@@ -18,17 +18,17 @@ public:
             return;
                
         // 80%, 60%
-        // combination.push_back(candidates[i]);
-        // validateSum(candidates, target-candidates[i], i);   
-        // combination.pop_back();
-        // validateSum(candidates, target , i + 1); 
+        combination.push_back(candidates[i]);
+        validateSum(candidates, target-candidates[i], i);   
+        combination.pop_back();
+        validateSum(candidates, target , i + 1); 
         
-        // 40% 60$
+        // 80% 60$
         // starting from i
-        for(int j=i; j<candidates.size(); j++){
-            combination.push_back(candidates[j]);
-            validateSum(candidates, target-candidates[j], j);   
-            combination.pop_back();
-        }
+        // for(int j=i; j<candidates.size(); j++){
+        //     combination.push_back(candidates[j]);
+        //     validateSum(candidates, target-candidates[j], j);   
+        //     combination.pop_back();
+        // }
     }
 };
