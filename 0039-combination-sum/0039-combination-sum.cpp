@@ -3,6 +3,9 @@ private:
     vector<int> combination;
     vector<vector<int>> result;
 public:
+    // we make 2 decision each time => O(2^)
+    // if 1 is the smallest candidate, it takes target times to reach target
+    // => O(2^T)
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         validateSum(candidates, target, 0);
         return result;
@@ -18,10 +21,11 @@ public:
             return;
                
         // 80%, 60%
+        
         combination.push_back(candidates[i]);
         validateSum(candidates, target-candidates[i], i);   
         combination.pop_back();
-        validateSum(candidates, target , i + 1); 
+        validateSum(candidates, target , i + 1);
         
         // 80% 60$
         // starting from i
