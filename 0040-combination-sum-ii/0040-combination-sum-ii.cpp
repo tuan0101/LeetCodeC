@@ -12,32 +12,34 @@ public:
         return result;
     }
     
-    void sum(vector<int>& candidates, int target, int begin){
+    void sum(vector<int>& candidates, int target, int i){
         if(target == 0){
             result.push_back(comb);
             return;
         }
         
-        if(begin>= candidates.size() || candidates[begin] > target)
+        if(i>= candidates.size() || candidates[i] > target)
             return;
         
-        // comb.push_back(candidates[i]);
-        // sum(candidates, target - candidates[i], i+1);
-        // comb.pop_back();
-        // // ignore all repeated current number
-        // while(i<candidates.size()-1 && candidates[i+1]==candidates[i]){
-        //     i++;
-        // }        
-        // sum(candidates, target, i+1);
-        int prev = -1;
-        for(int i=begin; i<candidates.size(); i++){
-            if(candidates[i]==prev) continue;
+        comb.push_back(candidates[i]);
+        sum(candidates, target - candidates[i], i+1);
+        comb.pop_back();
+        // ignore all repeated current number
+        while(i<candidates.size()-1 && candidates[i+1]==candidates[i]){
+            i++;
+        }        
+        sum(candidates, target, i+1);
+        
+        // 50% 87%
+//         int prev = -1;
+//         for(int i=begin; i<candidates.size(); i++){
+//             if(candidates[i]==prev) continue;
             
-            comb.push_back(candidates[i]);
-            sum(candidates, target - candidates[i], i+1);
-            comb.pop_back();
-            prev = candidates[i];
-        }
+//             comb.push_back(candidates[i]);
+//             sum(candidates, target - candidates[i], i+1);
+//             comb.pop_back();
+//             prev = candidates[i];
+//         }
             
     }
 };
