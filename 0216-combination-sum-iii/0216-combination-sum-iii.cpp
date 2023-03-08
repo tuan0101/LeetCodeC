@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> combinationSum3(int k, int n) {
-        int candidates[] = {1,2,3,4,5,6,7,8,9};
+        // 100% 50%
         vector<vector<int>> result;
         vector<int> comb;
         sum(result, comb, k, n, 1);
@@ -14,7 +14,7 @@ public:
             return;
         }
         
-        if(candidate>9 || k<=0 ||  candidate > target)
+        if(candidate>9 || k<=0 || candidate > target)
             return;
         
         // include candidate in combination
