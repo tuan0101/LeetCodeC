@@ -28,6 +28,8 @@ public:
 //         }       
 //         delete[] used;
 //     }
+    
+        // swap 100% 20%
         void permute(vector<int> nums, int i, vector<vector<int>>& perms) {
         if (i == nums.size()) {
             perms.push_back(nums);
