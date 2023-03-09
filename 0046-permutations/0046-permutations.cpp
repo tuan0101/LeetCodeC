@@ -1,6 +1,8 @@
 class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums) {
+        // 100% 45%
+        // O(N!*N) the decision tree has N! leaf, and each leaf have N calls
         vector<vector<int>> result;
         vector<int> comb;
         const int n = nums.size();
