@@ -5,8 +5,8 @@ public:
         // O(N!*N) the decision tree has N! leaf, and each leaf have N calls
         vector<vector<int>> result;
         vector<int> comb;
-        const int n = nums.size();
         vector<bool> used(nums.size(), false);
+        
         getPermutation(result, comb, nums, used);
         return result;
         // vector<vector<int>> perms;
