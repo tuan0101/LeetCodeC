@@ -10,6 +10,8 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        // 34% 27%
+        // O(N) space: O(H) height of binary tree
         if(root==NULL || root->val==p->val || root->val==q->val)
             return root;
         
