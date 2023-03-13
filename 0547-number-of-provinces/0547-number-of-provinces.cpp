@@ -1,3 +1,4 @@
+// 73% 77%
 class DisjointSet{
 private:
     vector<int> root;
