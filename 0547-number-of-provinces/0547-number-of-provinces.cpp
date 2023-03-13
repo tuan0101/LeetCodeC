@@ -1,4 +1,4 @@
-// 30-73% 60-77%
+
 // class DisjointSet{
 // private:
 //     vector<int> root;
@@ -43,6 +43,7 @@
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
+        // 30-73% 60-77%
 //         int n = isConnected.size();
 //         DisjointSet ds(n);
         
@@ -54,6 +55,8 @@ public:
 //         }
         
 //         return ds.getCount();
+        
+        // 55% 90%
         int n = isConnected.size();
         int result=0;
         vector<bool> visited(n, false);
