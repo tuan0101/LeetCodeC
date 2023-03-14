@@ -64,7 +64,7 @@ public:
         
         // unordered_map<int, vector<string>> mergedEmail
         // could use hash map
-        vector<string> mergedEmail[n];
+        vector<vector<string>> mergedEmail(n);
         for(auto& iter : emailMap){
             string email = iter.first;
             int group = ds.find(iter.second);
