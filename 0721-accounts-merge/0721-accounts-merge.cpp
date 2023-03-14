@@ -62,17 +62,8 @@ public:
             }
         }
         
-        // unordered_map<int, vector<string>> emailList;
-        // for(auto& emailIterator : emailMap){
-        //     string email = emailIterator.first;
-        //     int index = emailIterator.second;
-        //     int rootIndex = ds.find(index);
-        //     if(emailList[rootIndex].size()==0){
-        //         string name = accounts[rootIndex][0];
-        //         emailList[rootIndex].push_back(name);
-        //     }
-        //     emailList[rootIndex].push_back(email);
-        // }
+        // unordered_map<int, vector<string>> mergedEmail
+        // could use hash map
         vector<string> mergedEmail[n];
         for(auto& iter : emailMap){
             string email = iter.first;
@@ -85,14 +76,10 @@ public:
         }
         
         vector<vector<string>> result;
-        // for(auto& list : emailList){
-        //     sort(list.second.begin()+1, list.second.end());
-        //     result.push_back(list.second);
-        // }
-        for(int i=0; i<n; i++){
-            if(mergedEmail[i].size() == 0) continue;
-            sort(mergedEmail[i].begin()+1, mergedEmail[i].end());
-            result.push_back(mergedEmail[i]);
+        for(auto emailList : mergedEmail){
+            if(emailList.size() == 0) continue;
+            sort(emailList.begin()+1, emailList.end());
+            result.push_back(emailList);
         }
         return result;
         // 40% 20%
