@@ -1,6 +1,6 @@
 class Solution {
 public:      
-    vector<vector<int>> dp;
+   // vector<vector<int>> dp;
     bool canPartition(vector<int>& nums) {
         // 95% 90%
         int sum = accumulate(begin(nums), end(nums), 0), target = sum / 2;
