@@ -1,80 +1,49 @@
 class Solution {
-private:
-    vector<int> result;
-    enum move{right, down, up, left};
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        move dir = right;
-        updateOrder(matrix, dir, 0, 0);
+        
+        enum move{RIGHT, DOWN, UP, LEFT};
+        
+        vector<int> result;
+        move dir = RIGHT;
+        //updateOrder(matrix, dir, 0, 0);
+        int left=0, right=matrix[0].size()-1, top=0, bottom = matrix.size()-1;
+        
+        while(left<=right && top<=bottom){
+            switch(dir){
+                case RIGHT:
+                    for(int i=left; i<=right; i++){
+                        result.push_back(matrix[top][i]);
+                    }
+                    top++;
+                    dir = DOWN;
+                    break;
+                case DOWN:
+                    for(int i=top; i<=bottom; i++){
+                        result.push_back(matrix[i][right]);
+                    }                       
+                    right--;
+                    dir = LEFT;
+                    break;
+                case LEFT:
+                    for(int i=right; i>=left; i--){
+                        result.push_back(matrix[bottom][i]);
+                    }
+                    bottom--;
+                    dir = UP;
+                    break;
+                case UP:
+                    for(int i=bottom; i>=top; i--){
+                        result.push_back(matrix[i][left]);
+                    }
+                    left++;
+                    dir = RIGHT;
+                    break;
+            }              
+        }
         return result;
     }
-    
-    void updateOrder(vector<vector<int>>& matrix, move dir, int i, int j){
-        if(i<0 || j<0 || i>=matrix.size() || j>= matrix[0].size() || matrix[i][j]==101){
-            return;
-        }
 
-        if(dir == right){
-            if(j == matrix[0].size()-1 || matrix[i][j+1] == 101){
-                result.push_back(matrix[i][j]);
-                matrix[i][j] = 101;                
-                
-                updateOrder(matrix, down, i+1, j);                
-            }
-            else {
-                result.push_back(matrix[i][j]);
-                matrix[i][j] = 101;
-                               
-                updateOrder(matrix, right, i, j+1);
-
-            }
-
-        }else if(dir == down){
-            if(i == matrix.size()-1 || matrix[i+1][j] == 101){
-                result.push_back(matrix[i][j]);
-                matrix[i][j] = 101;
-                               
-                updateOrder(matrix, left, i, j-1);
-            }
-            else{
-                result.push_back(matrix[i][j]);
-                matrix[i][j] = 101;              
-                
-                updateOrder(matrix, down, i+1, j);
-            }
-
-        }else if(dir == left){
-            if(j == 0 || matrix[i][j-1] == 101){
-                result.push_back(matrix[i][j]);
-                matrix[i][j] = 101;
-                
-                
-                updateOrder(matrix, up, i-1, j);
-            }
-            else{
-                result.push_back(matrix[i][j]);
-                matrix[i][j] = 101;
-                
-                
-                updateOrder(matrix, dir, i, j-1);
-            }
-        }else if(dir == up){
-            if(i == 0 || matrix[i-1][j] == 101){
-                result.push_back(matrix[i][j]);
-                matrix[i][j] = 101;
-                
-                
-                updateOrder(matrix, right, i, j+1);
-            }
-            else{
-                result.push_back(matrix[i][j]);
-                matrix[i][j] = 101;
-                
-                
-                updateOrder(matrix, up, i-1, j);
-            }
-        }
-    }
 };
 
 // [[1,2,3,4],
