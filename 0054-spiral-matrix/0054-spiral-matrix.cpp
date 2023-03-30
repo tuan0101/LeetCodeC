@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        
+        // 100% 99%
         enum move{RIGHT, DOWN, UP, LEFT};
         
         vector<int> result;
