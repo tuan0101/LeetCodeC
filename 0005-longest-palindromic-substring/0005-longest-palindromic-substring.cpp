@@ -9,7 +9,7 @@ public:
         //     checkPalindrome(s, i, i+1);
         // }
         // return result;
-        if(s.size() < 2) return s;
+        //if(s.size() < 2) return s;
         int max_len = 0;
         int start_idx = 0;
         int i = 0;
