@@ -12,6 +12,7 @@
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
+        // BFS 75% 73%
         if(!root) return {};
         vector<int> result;
         queue<TreeNode*> q;
