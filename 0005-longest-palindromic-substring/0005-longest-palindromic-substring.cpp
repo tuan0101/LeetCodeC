@@ -11,12 +11,12 @@ public:
         return result;
     }
     
+    // 10% 5%
     void checkPalindrome(string s, int l, int r){
         while(l>=0 && r<s.size() && s[l] == s[r]){
-            string currentPal = s.substr(l, r-l+1);
-            if(currentPal.size() > length){
-                result = currentPal;
-                length = currentPal.size();
+            if(r-l+1 > length){
+                result = s.substr(l, r-l+1);
+                length = r-l+1 ;
             }
             l--;
             r++;                
