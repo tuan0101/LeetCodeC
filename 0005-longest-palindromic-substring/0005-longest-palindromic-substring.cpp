@@ -5,7 +5,6 @@ public:
         int max_len = 0;
         int i=0;
         int start = 0;
-        string res;
         while(i < s.size()){
             int l = i, r = i;
             
@@ -19,11 +18,10 @@ public:
             int new_len = r-l+1;
             if(new_len > max_len){
                 max_len = new_len;
-                //start = l;
-                res = s.substr(l, max_len);
+                start = l;
             }
         }
-        return res; //s.substr(start, max_len);
+        return s.substr(start, max_len);
     }  
 };
 
