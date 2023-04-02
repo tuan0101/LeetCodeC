@@ -2,6 +2,8 @@ class Solution {
 public:
     
     string longestPalindrome(string s) {
+        // 94% 97%
+        //  time: N^2 space: O(1)
         int max_len = 0;
         int i=0;
         int start = 0;
