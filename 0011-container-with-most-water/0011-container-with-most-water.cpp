@@ -1,6 +1,8 @@
 class Solution {
 public:
     int maxArea(vector<int>& height) {
+        // 50% 50%
+        // O(N)
         int water = 0;
         int left = 0, right = height.size()-1;
         
@@ -9,9 +11,10 @@ public:
             int curWater = (right-left) * curHeight;
             water = max(water, curWater);
             
-            if(height[left]<height[right])
+            while(left < right && height[left] <= curHeight)
                 left++;
-            else right--;
+            while(left < right && height[right] <= curHeight)
+                right--;
         }
         return water;
     }
