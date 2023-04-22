@@ -14,11 +14,17 @@ public:
     unordered_map<int, int> inorderToIndex;
     int current;
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        current = 0;
+        // Time: O(N)
+        // build hash_map take O(N)
+        // recursive build take O(1) on each node, there are N nodes -> O(N)
+        // Space: O(N)
+        // worst case: O(N) average: O(logN)
+        current = 0; 
         
         for(int i=0; i<inorder.size(); i++){
             inorderToIndex[inorder[i]] = i; // value of inorder -> index
         }
+        
         return build(preorder, inorder, 0, preorder.size()-1);
     }
     
@@ -33,6 +39,3 @@ public:
         return root;
     }
 };
-
-// root = 3
-// left = 9, right = 15, 20, 7
