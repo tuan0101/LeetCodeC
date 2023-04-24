@@ -1,7 +1,11 @@
 class Solution {
 public:
     bool exist(vector<vector<char>>& board, string word) {
-
+        // TIme: O(M*N*4^L) L is the length of word
+        // M*N is number of cell
+        // each cell could have 4 directions
+        // each direction and another 4 directions up to L time
+        // Space: O(L) the call stack is up to L
         for(int i=0; i<board.size(); i++){
             for(int j=0; j<board[0].size(); j++){
                 if(board[i][j] == word[0]){
