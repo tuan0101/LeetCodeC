@@ -19,8 +19,8 @@ public:
         
         int left, right;
         for(int i=p.size(); i<s.size(); i++){
-            left = s[i-p.size()]-'a';
-            window[left]--;
+            left = s[i-p.size()]-'a'; // s[i-p.size()] return left char
+            window[left]--;           // window[left] : occurence for the left char
             
             right = s[i] - 'a';
             window[right]++;
