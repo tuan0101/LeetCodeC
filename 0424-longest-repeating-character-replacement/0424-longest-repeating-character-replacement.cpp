@@ -7,22 +7,18 @@ public:
         for(int r=0; r<s.length(); r++){
             window++;
             char c = s[r];
-            map[c]++;
+            map[c]++;          // either use map[128] or map[32] with map[c-'A']
             mostFreq = max(mostFreq, map[c]);
             if(window-mostFreq <= k){
                 res = max(res, window);
-                // cout<<" window: "<< window;
-                // cout<<" mostFreq: "<< mostFreq;
             }
             else{
                 map[s[l]]--;
-                // if(s[l] == c)
-                //     mostFreq--;
                 l++;
                 window--;
-                
+                // if we remove the leftmost char that happen to be the most frequency char
+                // we do not need to update it, because we want the max window which will require the max freq
             }
-
         }
         return res;
     }
