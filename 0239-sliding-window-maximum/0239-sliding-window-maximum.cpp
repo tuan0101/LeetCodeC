@@ -3,47 +3,56 @@ public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         // add and remove take O(1) and we might do this for every number in nums
         // => time: O(1)xn = O(n), space: O(n)
+
         deque<int> q;
         vector<int> res;
-        int l=0, r=k, maxIndex=0;
-        // create first window
-        for(int i=0; i<k; i++){
-            while(!q.empty() && nums[i] >= nums[q.back()]){
-                    q.pop_back();
-            }
-            q.push_back(i);                        
-        }
-        res.push_back(nums[q.front()]);
+        int l=0;
 
-        // check each window
-        for(int r=k; r<nums.size(); r++){
-            l++;
+        for(int r=0; r<nums.size(); r++){
+
+            while(!q.empty() && nums[r] >= nums[q.back()]){
+                q.pop_back();
+            }
+            q.push_back(r);
+            
             if(!q.empty() && l > q.front())
                 q.pop_front();
 
-            while(!q.empty() && nums[r] >= nums[q.back()]){
-                    q.pop_back();
+            if(r + 1 >= k){
+                l++;
+                res.push_back(nums[q.front()]);
             }
-            q.push_back(r);  
-                  
-            res.push_back(nums[q.front()]);
         }
-
         return res;
+        // deque<int> q;
+        // vector<int> res;
+        // int l=0, r=k, maxIndex=0;
+        // // create first window
+        // for(int i=0; i<k; i++){
+        //     while(!q.empty() && nums[i] >= nums[q.back()]){
+        //             q.pop_back();
+        //     }
+        //     q.push_back(i);                        
+        // }
+        // res.push_back(nums[q.front()]);
 
-    //         vector<int> result;
-    // if (k == 0) return result;
-    // deque<int> w;
-    // for (int i = 0, n = (int)nums.size(); i < n; i++) {
-    //     while (!w.empty() && w.front() <= i-k)
-    //         w.pop_front();
-    //     while (!w.empty() && nums[w.back()] <= nums[i])
-    //         w.pop_back();
-    //     w.push_back(i);
-    //     if (i >= k-1)
-    //         result.push_back(nums[w.front()]);
-    // }
-    // return result;
+        // // check each window
+        // for(int r=k; r<nums.size(); r++){
+        //     l++;
+        //     if(!q.empty() && l > q.front())
+        //         q.pop_front();
+
+        //     while(!q.empty() && nums[r] >= nums[q.back()]){
+        //             q.pop_back();
+        //     }
+        //     q.push_back(r);  
+                  
+        //     res.push_back(nums[q.front()]);
+        // }
+
+        // return res;
+
+
     }
 };
 
