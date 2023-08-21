@@ -5,12 +5,13 @@ public:
         // O(N * 26)
         vector<int> result;
         vector<int> pCount(26,0);
-        vector<int> window(26,0);
-        
-        if(p.size() > s.size())
+        vector<int> window(26,0);     
+        int pSize = p.size(), sSize = s.size(), start;
+
+        if(pSize > sSize)
             return result;
         // first window
-        for(int i=0; i<p.size(); i++){
+        for(int i=0; i<pSize; i++){
             pCount[p[i]-'a']++;
             window[s[i]-'a']++;
         }
@@ -18,15 +19,16 @@ public:
             result.push_back(0);
         
         int left, right;
-        for(int i=p.size(); i<s.size(); i++){
-            left = s[i-p.size()]-'a'; // s[i-p.size()] return left char
+        for(int i=pSize; i<sSize; i++){
+            start = i-pSize;
+            left = s[start]-'a'; // s[i-p.size()] return left char
             window[left]--;           // window[left] : occurence for the left char
             
             right = s[i] - 'a';
             window[right]++;
             
             if(pCount == window) 
-                result.push_back(i-p.size()+1);
+                result.push_back(start+1);
         }
         return result;
     }
