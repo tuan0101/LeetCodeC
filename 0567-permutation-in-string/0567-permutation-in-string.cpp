@@ -7,7 +7,7 @@ public:
         int res, matches = 0;
 
         if(s1_size > s2_size) return false;
-        
+
         // first window
         for(int i=0; i<s1_size; i++){
             map1[s1[i]-'a']++;
@@ -21,11 +21,13 @@ public:
 
         if(matches==26) return true;
 
-        for(int r=s1_size; r<s2_size; r++){
+        for(int r=s1_size; r<s2_size; r++){         
             int cur = s2[l]-'a';
             map2[cur]--;
+            // removing character is not in s1
             if(map2[cur] == map1[cur])             
                 matches++;
+            // removing character in s1
             else if(map2[cur]+1 == map1[cur])
                 matches--;
             l++;
@@ -33,17 +35,15 @@ public:
             cur = s2[r]-'a';
             map2[cur]++;
             if(map2[cur] == map1[cur])
-                matches++;                
+                matches++;            
+            // adding a new character that is not in s1    
             else if(map2[cur]-1 == map1[cur])
                 matches--;
-            
+            // else adding a character that is in s1 but not reach the count yet
             
             if(matches == 26) return true;
-
         }
-
         return false;
-
     }
 };
 
